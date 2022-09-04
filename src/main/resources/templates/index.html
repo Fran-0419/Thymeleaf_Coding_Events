@@ -1,14 +1,19 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
+<head th:replace="fragments :: head"></head>
+<!--<head>
     <meta charset="UTF-8">
     <title>Coding Events</title>
-</head>
-<body>
-    <nav>
+</head>-->
+<body class="container">
+
+<h1>Coding Events</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+  <!--  <nav>
         <ul>
             <li><a href="/events"> All Events</a></li>
         </ul>
-    </nav>
+    </nav>-->
 </body>
 </html>

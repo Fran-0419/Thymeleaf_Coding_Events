@@ -1,14 +1,64 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Event</title>
-</head>
-<body>
-<h1>Create Event</h1>
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+
 <form method="post" action="/events/create">
-    <input type="text" name="eventName">
-    <input type="submit" value="Create Event">
+    <div class="form-group">
+        <label>Name
+            <input  th:field="${event.name}" class="form-control">
+        </label>
+        <p class="error" th:errors="${event.name}"></p>
+    </div><br>
+
+    <div class="form-group">
+        <label>Description
+            <input type="text" th:field="${event.description}" class="form-control">
+        </label>
+        <p class="error" th:errors="${event.description}"></p>
+    </div><br>
+
+    <div class="form-group">
+        <label>Contact Email
+            <input th:field="${event.contactEmail}" class="form-control">
+        </label>
+        <p class="error" th:errors="${event.contactEmail}"></p>
+    </div><br>
+
+    <div class="form-group">
+        <label>Event Type
+            <select th:field="${event.type}">
+                <option th:each=" type : ${types}"
+                    th:value="${type}"
+                    th:text="${type.displayName}"
+                ></option>
+            </select>
+        </label>
+        <p class="error" th:errors="${event.contactEmail}"></p>
+    </div><br>
+
+    <div class="form-group">
+        <label>Location
+            <input th:field="${event.location}" class="form-control">
+        </label>
+        <p class="error" th:errors="${event.location}"></p>
+    </div><br>
+
+    <div class="form-group">
+        <label>Number Of Attendees
+            <input th:field="${event.numberOfAttendees}" class="form-control">
+        </label>
+        <p class="error" th:errors="${event.numberOfAttendees}"></p>
+    </div><br>
+
+    <div class="form-group">
+        <input type="submit" value="Create Event" class="btn btn-success">
+
+    </div>
 </form>
 
 </body>
