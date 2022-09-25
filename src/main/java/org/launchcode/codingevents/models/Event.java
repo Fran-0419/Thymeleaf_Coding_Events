@@ -1,16 +1,23 @@
 package org.launchcode.codingevents.models;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
+@Entity
 public class Event {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
+
+    //private static int nextId = 1;
 
     @NotBlank(message = "Name must not be blank. Name is required.")
     @Size(min = 3, max = 50 )
@@ -33,7 +40,7 @@ public class Event {
     private int numberOfAttendees;
 
     public Event(String name, String description, String contactEmail, EventType type, String location, int numberOfAttendees) {
-        this();
+        // this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
@@ -44,8 +51,8 @@ public class Event {
     }
 
     public Event(){
-        this.id = nextId;
-        nextId++;
+        /*this.id = nextId;
+        nextId++;*/
     }
 
 
