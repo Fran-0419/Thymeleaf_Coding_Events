@@ -1,10 +1,13 @@
 package org.launchcode.codingevents.models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class EventCategory extends AbstractEntity{
+public class  EventCategory extends AbstractEntity{
 
 //    @Id
 //    @GeneratedValue
@@ -12,6 +15,9 @@ public class EventCategory extends AbstractEntity{
 
     @Size(min = 3, message = "Name must be at least 3 characters long" )
     private String name;
+
+    @OneToMany(mappedBy = "eventCategory")
+    private final List<Event> events = new ArrayList<>();
 
     public EventCategory() {}
 
@@ -36,7 +42,11 @@ public class EventCategory extends AbstractEntity{
         return super.toString();
     }
 
-//    @Override
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
 //        if (!(o instanceof EventCategory)) return false;
